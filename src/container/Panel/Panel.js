@@ -3,8 +3,8 @@ import "./panel.css";
 
 const panel = () => (
   <div className="panel">
-    <div className="panel-front"> panel front </div>{" "}
-    <div className="panel-back"> panel back </div>{" "}
+    <div className="panel-front">Panel front</div>
+    <div className="panel-back">Panel back</div>
   </div>
 );
 
