@@ -13,7 +13,6 @@ class FrontSide extends Component {
   updaterWeatherHandler = () => {
     getWeatherForLocation(this.props.currentCity)
       .then(weather => {
-        console.log('front panel', weather.currently);
         this.setState({
           currentWather: weather.currently,
           timeZone: weather.timezone,
@@ -28,7 +27,6 @@ class FrontSide extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.currentCity.woeid !== prevState.prevCityId) {
-      console.log(prevState);
       return {
         prevCityId: nextProps.currentCity.woeid,
         currentWather: null,

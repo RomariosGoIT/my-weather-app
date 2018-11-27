@@ -6,7 +6,6 @@ export const getWeatherForLocation = city => {
       mode: 'cors',
     },
   ).then(res => {
-    console.log(res);
     return res.json();
   });
 };
