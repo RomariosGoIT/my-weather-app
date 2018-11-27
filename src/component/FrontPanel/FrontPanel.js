@@ -23,7 +23,7 @@ const frontPanel = props => (
     </div>
     <div className="card-line" />
     <div className="card-row">
-      <div className="card-city"> {props.currentCityName} </div>
+      <div className="card-city"> {props.currentCityName.title} </div>
       <button className="card-options" onClick={props.clicked}>
         <img src={optionImage} width={32} alt="options" />
       </button>

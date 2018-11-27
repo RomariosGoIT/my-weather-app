@@ -1,9 +1,13 @@
 import React from 'react';
+import CitiesList from '../CitiesList/CitiesList';
+import './BackPanel.css';
 
 const backPanel = props => (
-  <div>
-    Back Panel
-    <button onClick={props.clicked}> Flip </button>
+  <div className="card-back">
+    <CitiesList currentCity={props.currentCity} />
+    <button className="button" onClick={props.clicked}>
+      Flip
+    </button>
   </div>
 );
 

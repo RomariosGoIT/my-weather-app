@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import FrontSideView from './FrontPanel';
 import moment from 'moment';
 import { getWeatherForLocation } from '../../api';
-import cities from '../../cities.json';
 
 class FrontSide extends Component {
   state = {
@@ -11,7 +10,7 @@ class FrontSide extends Component {
   };
 
   componentDidMount() {
-    getWeatherForLocation(cities[0]).then(weather => {
+    getWeatherForLocation(this.props.currentCity).then(weather => {
       console.log(weather);
       this.setState({
         currentWather: weather.currently,
@@ -38,7 +37,7 @@ class FrontSide extends Component {
         temperature={temperature}
         apparentTemperature={apparentTemperature}
         summary={summary}
-        currentCityName={this.state.timeZone}
+        currentCityName={this.props.currentCity}
         clicked={this.props.onClick}
       />
     );

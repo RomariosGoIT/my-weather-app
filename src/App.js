@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import FrontSide from './component/FrontPanel/index';
 import BackSide from './component/BackPanel/index';
+import cities from './cities.json';
 import './panel.css';
 
 class App extends Component {
   state = {
-    flipped: false,
+    flipped: true,
+    currentCity: cities[0],
   };
 
   onFlipHandler = () => {
@@ -18,10 +20,16 @@ class App extends Component {
     return (
       <div className={`panel ${this.state.flipped ? 'flip' : null}`}>
         <div className="panel-front">
-          <FrontSide onClick={this.onFlipHandler} />
+          <FrontSide
+            currentCity={this.state.currentCity}
+            onClick={this.onFlipHandler}
+          />
         </div>
         <div className="panel-back">
-          <BackSide onClick={this.onFlipHandler} />
+          <BackSide
+            onClick={this.onFlipHandler}
+            currentCity={this.state.currentCity}
+          />
         </div>
       </div>
     );
