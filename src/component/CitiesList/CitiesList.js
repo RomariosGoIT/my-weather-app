@@ -1,19 +1,18 @@
 import React from 'react';
 import './CitiesList.css';
+import CitiesItems from './CitiesItems/CitiesItems';
 import cities from '../../cities.json';
 
 const citiesList = props => (
   <ul className="list">
     {cities.map(city => {
       return (
-        <li
-          className={`list-item ${
-            props.currentCity.title === city.title ? 'is-selected' : ''
-          }`}
+        <CitiesItems
           key={city.woeid}
-        >
-          {city.title}
-        </li>
+          onSelect={props.onSelect}
+          isSelected={props.currentCity.title === city.title}
+          city={city}
+        />
       );
     })}
   </ul>

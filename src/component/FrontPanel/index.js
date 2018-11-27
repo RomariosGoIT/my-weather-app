@@ -7,16 +7,41 @@ class FrontSide extends Component {
   state = {
     currentWather: null,
     timeZone: null,
+    prevCityId: null,
+  };
+
+  updaterWeatherHandler = () => {
+    getWeatherForLocation(this.props.currentCity)
+      .then(weather => {
+        console.log('front panel', weather.currently);
+        this.setState({
+          currentWather: weather.currently,
+          timeZone: weather.timezone,
+        });
+      })
+      .catch(err => console.log(err));
   };
 
   componentDidMount() {
-    getWeatherForLocation(this.props.currentCity).then(weather => {
-      console.log(weather);
-      this.setState({
-        currentWather: weather.currently,
-        timeZone: weather.timezone,
-      });
-    });
+    this.updaterWeatherHandler();
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.currentCity.woeid !== prevState.prevCityId) {
+      console.log(prevState);
+      return {
+        prevCityId: nextProps.currentCity.woeid,
+        currentWather: null,
+      };
+    }
+    return null;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.currentWather) {
+      return null;
+    }
+    this.updaterWeatherHandler();
   }
 
   render() {

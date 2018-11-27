@@ -6,7 +6,7 @@ import './panel.css';
 
 class App extends Component {
   state = {
-    flipped: true,
+    flipped: false,
     currentCity: cities[0],
   };
 
@@ -14,6 +14,11 @@ class App extends Component {
     this.setState({
       flipped: !this.state.flipped,
     });
+  };
+
+  onSelectCity = city => {
+    console.log(city);
+    this.setState({ currentCity: city });
   };
 
   render() {
@@ -27,6 +32,7 @@ class App extends Component {
         </div>
         <div className="panel-back">
           <BackSide
+            onSelect={this.onSelectCity}
             onClick={this.onFlipHandler}
             currentCity={this.state.currentCity}
           />
