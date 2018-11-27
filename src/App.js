@@ -1,23 +1,29 @@
-import React, { Component } from "react";
-import FrontSide from "./component/FrontPanel/index";
+import React, { Component } from 'react';
+import FrontSide from './component/FrontPanel/index';
+import BackSide from './component/BackPanel/index';
 import './panel.css';
 
 class App extends Component {
   state = {
-    flipped: false
-  }
+    flipped: false,
+  };
+
   onFlipHandler = () => {
-    this.setState({flipped: !this.state.flipped})
-  }
+    this.setState({
+      flipped: !this.state.flipped,
+    });
+  };
 
   render() {
     return (
       <div className={`panel ${this.state.flipped ? 'flip' : null}`}>
-      <div className="panel-front">
-        <FrontSide onClick={this.onFlipHandler}/>
+        <div className="panel-front">
+          <FrontSide onClick={this.onFlipHandler} />
+        </div>
+        <div className="panel-back">
+          <BackSide onClick={this.onFlipHandler} />
+        </div>
       </div>
-      <div className="panel-back"> Panel back <button onClick={this.onFlipHandler}>Flip</button></div>
-    </div>     
     );
   }
 }
