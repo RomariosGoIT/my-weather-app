@@ -17,7 +17,6 @@ class App extends Component {
   };
 
   onSelectCity = city => {
-    console.log(city);
     this.setState({ currentCity: city });
   };
 
