@@ -13,6 +13,7 @@ class FrontSide extends Component {
   updaterWeatherHandler = () => {
     getWeatherForLocation(this.props.currentCity)
       .then(weather => {
+        console.log(weather);
         this.setState({
           currentWather: weather.currently,
           timeZone: weather.timezone,
